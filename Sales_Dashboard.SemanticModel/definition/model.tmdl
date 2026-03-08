@@ -1,0 +1,22 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Data"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Data
+ref table DateTableTemplate_6526e016-9324-4628-9396-85264b1642c3
+ref table LocalDateTable_fa7c5cef-012f-4de2-b56d-4458683aed54
+
+ref role 'Bangalore Branch'
+
+ref cultureInfo en-GB
+

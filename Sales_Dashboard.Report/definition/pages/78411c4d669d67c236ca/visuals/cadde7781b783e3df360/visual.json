@@ -1,0 +1,185 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "cadde7781b783e3df360",
+  "position": {
+    "x": 220.21505376344086,
+    "y": 100.3921568627451,
+    "z": 0,
+    "height": 579.68374446552821,
+    "width": 720.55660974067052,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data"
+                    }
+                  },
+                  "Property": "Location"
+                }
+              },
+              "queryRef": "Data.Location",
+              "nativeQueryRef": "Location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data"
+                    }
+                  },
+                  "Property": "Item name"
+                }
+              },
+              "queryRef": "Data.Item name",
+              "nativeQueryRef": "Item name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data"
+                    }
+                  },
+                  "Property": "Category name"
+                }
+              },
+              "queryRef": "Data.Category name",
+              "nativeQueryRef": "Category name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data"
+                    }
+                  },
+                  "Property": "Ordertype name"
+                }
+              },
+              "queryRef": "Data.Ordertype name",
+              "nativeQueryRef": "Ordertype name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Data"
+                    }
+                  },
+                  "Property": "Receipt no"
+                }
+              },
+              "queryRef": "Data.Receipt no",
+              "nativeQueryRef": "Receipt no"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Data"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Sale date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Year"
+                }
+              },
+              "queryRef": "Data.Sale date.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "Sale date Year"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Data"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Sale date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Data.Sale date.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Sale date Month"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Data"
+                        }
+                      },
+                      "Property": "Item amount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Data.Item amount)",
+              "nativeQueryRef": "Sum of Item amount"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Data"
+                      }
+                    },
+                    "Property": "Item amount"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

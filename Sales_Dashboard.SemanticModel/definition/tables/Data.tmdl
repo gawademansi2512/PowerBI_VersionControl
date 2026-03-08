@@ -1,0 +1,119 @@
+table Data
+	lineageTag: 94b5e84a-a7c0-4b13-a5e0-992f82cc09d6
+
+	column 'Sale date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1174cc0-0d06-4349-81dd-cee3bfcf0ddb
+		summarizeBy: none
+		sourceColumn: Sale date
+
+		variation Variation
+			isDefault
+			relationship: 6d1442b5-e8c0-433c-b8f6-984004b44588
+			defaultHierarchy: LocalDateTable_fa7c5cef-012f-4de2-b56d-4458683aed54.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Receipt no'
+		dataType: string
+		lineageTag: a320ed04-2192-4703-9408-5a41cbce7a8d
+		summarizeBy: none
+		sourceColumn: Receipt no
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ordertype name'
+		dataType: string
+		lineageTag: 67541667-f7f7-40ac-a66a-ba1740de1b40
+		summarizeBy: none
+		sourceColumn: Ordertype name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category name'
+		dataType: string
+		lineageTag: 57c66e80-0feb-4dde-be17-fe6de29a637b
+		summarizeBy: none
+		sourceColumn: Category name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Price'
+		dataType: int64
+		formatString: 0
+		lineageTag: a89f6c2c-0122-4d24-9b14-6da65e777197
+		summarizeBy: sum
+		sourceColumn: Cost Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Selling price'
+		dataType: int64
+		formatString: 0
+		lineageTag: f4b66021-be77-4e54-8f89-4b4342f3e552
+		summarizeBy: sum
+		sourceColumn: Selling price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: fc961c9d-844f-4d2f-963c-9515a51e424e
+		summarizeBy: sum
+		sourceColumn: Item quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item amount'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9831291d-8d55-45a9-ba96-0403bd232b53
+		summarizeBy: sum
+		sourceColumn: Item amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax amount'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ef58cfd-1b86-4e3f-b787-e4666dc7c2c1
+		summarizeBy: sum
+		sourceColumn: Tax amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 6c24b388-3902-4e5b-9be4-37b561d4a5f4
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item name'
+		dataType: string
+		lineageTag: 9e97440c-da15-4977-8ee7-7398ad502540
+		summarizeBy: none
+		sourceColumn: Item name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Data = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\MansiGawade\OneDrive - Sceniuz IT Division of Mahapatra Universal Limited\Books_to_read\Learning\Power BI\V2 Salesdata.xlsx"), null, true),
+				    Data_Sheet = Source{[Item="Data",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Data_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sale date", type date}, {"Receipt no", type text}, {"Ordertype name", type text}, {"Item name", type text}, {"Category name", type text}, {"Cost Price", Int64.Type}, {"Selling price", Int64.Type}, {"Item quantity", Int64.Type}, {"Item amount", Int64.Type}, {"Tax amount", Int64.Type}, {"Location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
